@@ -1,53 +1,62 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Form({ parent, submitFunction }) {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submitFunction(formData);
-  };
-
+function Form({
+  parent,
+  submitFunction,
+  firstname,
+  setFirstname,
+  lastname,
+  setLastname,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  confirmPassword,
+  setConfirmPassword,
+}) {
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form className="form-container" onSubmit={submitFunction}>
+      {parent === "register" && (
+        <>
+          <label>
+            <h3>First Name</h3>
+            <input
+              type="text"
+              placeholder="Fisrt Name..."
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            <h3>Last Name</h3>
+            <input
+              type="text"
+              placeholder="Last Name..."
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+              required
+            />
+          </label>
+        </>
+      )}
       <label>
-        <h3>Username</h3>
+        <h3>Email</h3>
         <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
+          type="email"
+          placeholder="Email..."
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      {parent === "register" && (
-        <label>
-          <h3>Email</h3>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-      )}
       <label>
         <h3>Password</h3>
         <input
           type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
+          placeholder="Password..."
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
@@ -56,16 +65,14 @@ function Form({ parent, submitFunction }) {
           <h3>Confirm Password</h3>
           <input
             type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
+            placeholder="Confirm Password..."
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
       )}
-      <button type="submit" className="auth-button">
-        {parent === "register" ? "Register" : "Log In"}
-      </button>
+      <button>{parent === "register" ? "Register" : "Log In"}</button>
     </form>
   );
 }
