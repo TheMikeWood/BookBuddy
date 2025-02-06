@@ -1,6 +1,10 @@
 body {
   font-family: Georgia, serif;
   background-color: #f8f8f8;
+  background-image: url("/src/assets/pexels-pixabay-235985.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
 }
@@ -10,4 +14,136 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
+.single-book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.singbook-image {
+  width: 500px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.singtitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.singAuthor {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.singDescription {
+  max-width: 600px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.books-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.books-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  width: 50%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.book-item {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-item:hover {
+  background-image: url("src/assets/particle-slow.gif");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.book-image {
+  width: 100%;
+  height: 250px;
+  /* object-fit: cover; */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.book-item:hover .book-image {
+  transform: scale(1.05);
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
