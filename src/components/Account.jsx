@@ -77,7 +77,8 @@ function Account() {
     <div className="account-container">
       <h2>My Account</h2>
       <p>
-        <strong>Email:</strong> {account?.email}
+        <strong>Welcome!</strong> {account?.firstname}
+        {account?.lastname}
       </p>
 
       <h3>Checked-Out Books</h3>
@@ -105,7 +106,6 @@ function Account() {
       )}
     </div>
   );
-
 }
 
 export default Account;
