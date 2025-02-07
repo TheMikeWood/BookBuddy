@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "../components/Form/Form";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 function Register({ setToken }) {
@@ -52,7 +51,7 @@ function Register({ setToken }) {
         localStorage.setItem("token", data.token);
         setToken(data.token);
         alert("Successfully signed up!");
-        navigate("/account");
+        navigate("/me");
       } else {
         setError("Error signing up. Please try again.");
       }

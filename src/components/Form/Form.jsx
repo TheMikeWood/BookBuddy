@@ -22,7 +22,7 @@ function Form({
             <h3>First Name</h3>
             <input
               type="text"
-              placeholder="Fisrt Name..."
+              placeholder="First Name..."
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
               required

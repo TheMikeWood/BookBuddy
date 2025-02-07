@@ -40,7 +40,7 @@ function Login({ setToken }) {
         localStorage.setItem("token", response.data.token);
         setToken(response.data.token);
         alert("Login successful!");
-        navigate("/account");
+        navigate("/me");
       } else {
         setErrorMessage("Login failed. Please check your credentials.");
       }

@@ -13,12 +13,7 @@ function Navigations({ token, setToken }) {
     <header>
       <nav>
         <h1>
-          <img
-            id="logo-image"
-            src={bookLogo}
-            alt="Book Logo"
-            style={{ color: "white" }}
-          />
+          <img id="logo-image" src={bookLogo} alt="Book Logo" />
           Library App
         </h1>
         <Link to="/">Home</Link>
@@ -29,7 +24,7 @@ function Navigations({ token, setToken }) {
           </>
         ) : (
           <>
-            <Link to="/account">My Account</Link>
+            <Link to="/me">My Account</Link>
             <button onClick={handleLogout}>Logout</button>
           </>
         )}
