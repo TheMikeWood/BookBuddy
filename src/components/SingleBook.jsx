@@ -30,43 +30,6 @@ function SingleBook({ token, reservations, fetchReservations }) {
 
   const isBookCheckedOut = reservations?.some((res) => res.bookid === book?.id);
 
-  // Toggle book availability (for marking it available or unavailable manually)
-  const handleToggleAvailability = async () => {
-    if (!token) {
-      setMessage("You must be logged in to update availability.");
-      return;
-    }
-
-    setMessage(null);
-
-    try {
-      const newAvailability = !book.available; // Toggle availability
-
-      // Send PATCH request to update book availability
-      const updatedBook = await axios.patch(
-        `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${book.id}`,
-        { available: newAvailability },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // Update local state
-      setBook(updatedBook.data);
-      setMessage(
-        `Book marked as ${newAvailability ? "available" : "unavailable"}`
-      );
-    } catch (error) {
-      setMessage(
-        error.response?.data?.message ||
-          "Failed to update the book's availability."
-      );
-    }
-  };
-
   const handleCheckout = async () => {
     if (!token) {
       setMessage("You must be logged in to check out books.");
@@ -137,12 +100,6 @@ function SingleBook({ token, reservations, fetchReservations }) {
               : isCheckingOut
               ? "Checking out..."
               : "Checkout"}
-          </button>
-        )}
-
-        {token && (
-          <button onClick={handleToggleAvailability}>
-            {book.available ? "Mark as Unavailable" : "Mark as Available"}
           </button>
         )}
 
