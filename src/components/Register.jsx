@@ -1,4 +1,5 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -93,6 +94,12 @@ function Register({ setToken }) {
       />
     </div>
   );
+
+import React from "react";
+
+function Register() {
+  return <div>Register</div>;
+
 }
 
 export default Register;
