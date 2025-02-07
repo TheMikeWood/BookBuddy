@@ -41,8 +41,7 @@ function App() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching reservations:", error);
-        setError("Failed to load reservations.");
+        setError(error.response.data.message);
         setLoading(false);
       });
   };
@@ -56,7 +55,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -72,6 +71,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Books />} />
+        <Route path="*" element={<Books />} />
         <Route
           path="/book/:id"
           element={

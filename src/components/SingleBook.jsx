@@ -92,29 +92,6 @@ function SingleBook({ token, reservations, fetchReservations }) {
         }
       );
 
-      await axios
-        .post(
-          "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations",
-          { bookId: book.id },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((response) => {
-          console.log("Reservation made successfully", response.data);
-        })
-        .catch((error) => {
-          console.error("Error making reservation:", error);
-          if (error.response) {
-            console.error("API Error Response:", error.response.data);
-          } else {
-            console.error("Network Error:", error.message);
-          }
-        });
-
       setMessage("Book checked out successfully!");
       setBook((prevBook) => ({ ...prevBook, available: false }));
       fetchReservations();

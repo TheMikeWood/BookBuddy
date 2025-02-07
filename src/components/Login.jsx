@@ -41,12 +41,11 @@ function Login({ setToken }) {
         setToken(response.data.token);
         alert("Login successful!");
         navigate("/me");
-      } else {
-        setErrorMessage("Login failed. Please check your credentials.");
       }
     } catch (err) {
-      setErrorMessage("Error logging in. Please try again.");
-      console.error(err.message);
+      setErrorMessage(
+        `${err.response.data.message}. Please check your credentials.`
+      );
     } finally {
       setIsLoading(false);
     }

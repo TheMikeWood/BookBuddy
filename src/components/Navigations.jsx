@@ -3,12 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bookLogo from "/src/assets/books.png";
 
-function Navigations({ token, setToken }) {
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-  };
-
+function Navigations({ token, setToken, handleLogout }) {
   return (
     <header>
       <nav>

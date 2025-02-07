@@ -18,8 +18,7 @@ function Books() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching books:", error);
-        setError(error.message);
+        setError(error.response.data.message);
         setLoading(false);
       });
   }, []);

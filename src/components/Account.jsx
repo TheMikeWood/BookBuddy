@@ -13,26 +13,6 @@ function Account() {
   const token = localStorage.getItem("token");
 
   const fetchReservations = () => {
-    axios
-      .get(
-        "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        console.log("Reservations API Response:", response.data);
-
-        setReservations(response.data.reservation || []);
-      })
-      .catch((error) => {
-        console.error("Error fetching reservations:", error);
-        setError("Failed to load reservations.");
-      })
-      .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
     if (!token) {
       navigate("/login");
       return;
@@ -44,12 +24,32 @@ function Account() {
       })
       .then((response) => setAccount(response.data))
       .catch((error) => {
-        console.error("Error fetching account details:", error);
-        setError("Failed to fetch account details.");
+        setError(error.response.data.message);
       });
 
+    axios
+      .get(
+        "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        setReservations(response.data.reservation || []);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     fetchReservations();
-  }, [token, navigate]);
+  }, []);
 
   const handleReturnBook = async (reservationId, bookId) => {
     try {
@@ -60,23 +60,11 @@ function Account() {
         }
       );
 
-      console.log(
-        `Successfully returned book with reservation ID: ${reservationId}`
-      );
-
-      const updatedBook = await axios.get(
-        `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${bookId}`
-      );
-
-      if (updatedBook.data.book.available) {
-        console.log(`Book ${bookId} is now available again.`);
-      } else {
-        console.warn(`Book ${bookId} is still unavailable!`);
-      }
+      alert(`Successfully returned book with reservation ID: ${reservationId}`);
 
       fetchReservations();
     } catch (error) {
-      console.warn("Error returning book:", error);
+      setError(error.response.data.message);
       fetchReservations();
     }
   };

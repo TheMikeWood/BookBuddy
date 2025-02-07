@@ -52,12 +52,9 @@ function Register({ setToken }) {
         setToken(data.token);
         alert("Successfully signed up!");
         navigate("/me");
-      } else {
-        setError("Error signing up. Please try again.");
       }
     } catch (err) {
-      setError("Error signing up. Please try again.");
-      console.error(err.message);
+      setError(`${err.response.data.message}`);
     } finally {
       setLoading(false);
     }
