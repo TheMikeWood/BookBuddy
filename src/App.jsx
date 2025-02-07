@@ -60,11 +60,7 @@ function App() {
 
   return (
     <>
-      <Navigations
-        token={token}
-        setToken={setToken}
-        handleLogout={handleLogout}
-      />
+      <Navigations token={token} handleLogout={handleLogout} />
 
       {loading && <p>Loading reservations...</p>}
       {error && <p>{error}</p>}

@@ -51,7 +51,7 @@ function Account() {
     fetchReservations();
   }, []);
 
-  const handleReturnBook = async (reservationId, bookId) => {
+  const handleReturnBook = async (reservationId) => {
     try {
       await axios.delete(
         `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations/${reservationId}`,

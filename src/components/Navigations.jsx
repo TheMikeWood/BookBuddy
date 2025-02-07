@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bookLogo from "/src/assets/books.png";
 
-function Navigations({ token, setToken, handleLogout }) {
+function Navigations({ token, handleLogout }) {
   return (
     <header>
       <nav>
